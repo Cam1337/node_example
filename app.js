@@ -12,6 +12,11 @@ var users = require('./routes/users');
 var dust = require('adaro').dust({cache: false})
 dust.dust.helpers = require("dustjs-helpers").helpers;
 
+var custom_dust_helpers = require('./helpers/dust');
+for (var cdh in custom_dust_helpers){
+  dust.dust.helpers[cdh] = custom_dust_helpers[cdh]
+}
+
 var app = express();
 
 // view engine setup
