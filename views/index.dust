@@ -4,9 +4,14 @@
     <script>
         var opts = {
         	url: "/api/people",
-        	type: "get",
+        	type: "post",
         	format: "html",
-        	methods: {before: null, after: null},
+        	methods: {
+        	        before: function(el){
+        	            return {name: $(el).children().first().text().split(", ")[1]}
+        	        },
+        	        after: null
+            },
         	empty: true,
         };
 
@@ -16,6 +21,7 @@
 
         $(document).ready(function(){
             setInterval(updatePerson, 1000);
+            updatePerson();
         })
 
     </script>

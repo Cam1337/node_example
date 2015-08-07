@@ -17,10 +17,9 @@ function remoteRequest(el, options){
 	}
 
 	var params = {}
-	if (options.before){
-		var params = options.before(this) || {}
+	if (options.methods.before){
+		var params = options.methods.before(el) || {}
 	}
-
 	switch(options.type.toLowerCase()){
 		case "get":
 			$.get(options.url, insertHTML, options.format || "html");

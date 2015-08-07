@@ -46,8 +46,11 @@ router.get('/', function(req, res){
   res.render('index', {})
 })
 
-router.get('/api/people', function(req, res, next) {
-  var model = people[Math.floor(Math.random() * people.length)]
+router.post('/api/people', function(req, res, next) {
+  var model = {name: req.body.name}
+  while (model.name == req.body.name){
+    model = people[Math.floor(Math.random() * people.length)]
+  }
   model.title = "Express"
   res.render('people', model);
 });
