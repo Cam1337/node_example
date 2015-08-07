@@ -1,0 +1,22 @@
+{> "layout" /}
+{<body}
+    <div id="person"></div>
+    <script>
+        var opts = {
+        	url: "/api/people",
+        	type: "get",
+        	format: "html",
+        	methods: {before: null, after: null},
+        	empty: true,
+        };
+
+        function updatePerson(){
+            remoteRequest("#person", opts)
+        }
+
+        $(document).ready(function(){
+            setInterval(updatePerson, 1000);
+        })
+
+    </script>
+{/body}

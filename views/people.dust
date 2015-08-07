@@ -1,0 +1,21 @@
+
+<div>Hello, {name}</div>
+<div>
+    You are {age} year{@select key=age}{@eq value="1"}{:else}s{/eq}{/select} old
+</div>
+<div>
+    <span>Your friends are: </span>
+    {#friends}
+        <span>
+            {@math key=$idx method="add" operand="1"}
+               {@eq value=1}{/eq}
+               {@eq value=$len}
+                    &nbsp;and&nbsp;
+               {:else}
+                    ,&nbsp;
+               {/eq}
+            {/math}
+            {.name}
+        </span>
+    {/friends}
+</div>
