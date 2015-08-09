@@ -28,7 +28,7 @@ function remoteRequest(el, options){
 			$.post(options.url, params, insertHTML, options.format || "html")
 			break;
 		default:
-			$.get(options.url, insertHTML, "html")
+			$.get(options.url, insertHTML, options.format || "html")
 	}
 }
 

@@ -1,7 +1,7 @@
 
 <div>Hello, {name}</div>
 <div>
-    You are {age} {@pluralize_years age="age" /} old
+    You are {age} {@pluralize_years key="age" /} old
 </div>
 <div>
     <span>Your friends are: </span>

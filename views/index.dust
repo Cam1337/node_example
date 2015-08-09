@@ -12,7 +12,7 @@
         	        },
         	        after: null
             },
-        	empty: true,
+        	empty: true
         };
 
         function updatePerson(){
@@ -20,7 +20,7 @@
         }
 
         $(document).ready(function(){
-            setInterval(updatePerson, 1000);
+            setInterval(updatePerson, 2500);
             updatePerson();
         })
 
