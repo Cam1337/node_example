@@ -3,17 +3,16 @@ var router = express.Router();
 
 /* GET home page. */
 
-var defaultAPIModel = require("../models/api/default.js");
+var defaultModel = require("../models/default.js");
 
 router.get('/', function(req, res){
-  res.render('index', {title: "Random People"})
+  var model = require("../models/index");
+  defaultModel(model, req, res)
 })
 
 router.post('/api/people', function(req, res, next) {
   var model = require("../models/api/people");
-  defaultAPIModel(model, req, res, function(result){
-    console.log(result)
-  })
+  defaultModel(model, req, res)
 });
 
 module.exports = router;
