@@ -1,28 +1,23 @@
 {> "layout" /}
 {<body}
-    <div id="person"></div>
-    <script>
-        var opts = {
-        	url: "/api/people",
-        	type: "post",
-        	format: "html",
-        	methods: {
-        	        before: function(el){
-        	            return {name: $(el).children().first().text().split(", ")[1]}
-        	        },
-        	        after: null
-            },
-        	empty: true
-        };
+    <!--<div id="person"></div>-->
+    <!--<script src="/javascripts/people.js"></script>-->
+    <div>Welcome {user} coming from {history}</div>
+    <br>
+    <hr>
+    <br>
+    <form method="POST" action="/api/login">
+        <input type="text" name="username">
+        <input type="text" name="password">
+        <input type="submit" value="Login">
+    </form>
+    <br>
+    <hr>
+    <br>
+    <form method="POST" action="/api/register">
+        <input type="text" name="username">
+        <input type="text" name="password">
+        <input type="submit" value="Register">
+    </form>
 
-        function updatePerson(){
-            remoteRequest("#person", opts)
-        }
-
-        $(document).ready(function(){
-            setInterval(updatePerson, 2500);
-            updatePerson();
-        })
-
-    </script>
 {/body}

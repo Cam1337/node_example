@@ -1,7 +1,7 @@
 /**
  * Created by cam on 8/9/2015.
  */
-//defaultAPIModel = require("default.js")
+//defaultAPIModel = require("executor.js")
 
 var people = [
     {
@@ -51,5 +51,14 @@ module.exports = {
             dataModel = people[Math.floor(Math.random() * people.length)]
         }
         next(dataModel)
+    },
+    cookies: {
+        track: false,
+        set: function(req, result, next){
+            next({})
+        },
+        del: function(req, result, next){
+            next({})
+        }
     }
 }

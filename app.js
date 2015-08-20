@@ -5,9 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+/* custom middleware */
+var user_cookie_auth = require("./middleware/auth/user");
 
+var mysql_orm = require("./database/orm");
+var routes = require('./routes/index');
 
 var dust = require('adaro').dust({cache: false})
 dust.dust.helpers = require('./helpers/dust')
@@ -26,9 +28,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(mysql_orm)
+app.use(user_cookie_auth)
+
 
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 require("./helpers/error_handlers")(app)

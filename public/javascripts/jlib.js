@@ -14,6 +14,10 @@ function remoteRequest(el, options){
 			data = options.methods.after(data)
 		}
 		$(el).html(data)
+
+		if (options.methods.callback !== undefined && options.methods.callback !== null){
+			options.methods.callback()
+		}
 	}
 
 	var params = {}
